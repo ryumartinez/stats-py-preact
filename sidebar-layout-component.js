@@ -1,13 +1,19 @@
+// @ts-check
 import { h } from 'https://esm.sh/preact';
 import htm from 'https://esm.sh/htm';
 
 const html = htm.bind(h);
 
+/**
+ * Creates the main layout with an interactive sidebar.
+ * @param {import('./types.js').SidebarLayoutProps} props
+ * @returns {import('preact').VNode}
+ */
 const SidebarLayout = ({ children, activeView, onNavigate }) => {
     const navItems = [
         { id: 'dashboard', label: 'Dashboard' },
         { id: 'comparison', label: 'Sales Comparison' },
-        { id: 'growth', label: 'Growth Chart' }, // Add this new navigation item
+        { id: 'growth', label: 'Growth Chart' },
     ];
 
     const linkClass = (id) => {

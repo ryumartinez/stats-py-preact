@@ -1,3 +1,4 @@
+// @ts-check
 import { h } from 'https://esm.sh/preact';
 import { useEffect, useRef } from 'https://esm.sh/preact/hooks';
 import ApexCharts from 'https://esm.sh/apexcharts';
@@ -5,11 +6,17 @@ import htm from 'https://esm.sh/htm';
 
 const html = htm.bind(h);
 
+/**
+ * Displays a bar chart with an optional summary card.
+ * @param {import('./types.js').BarChartProps} props
+ * @returns {import('preact').VNode}
+ */
 const BarChart = ({ title, description, data, summary }) => {
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
 
     useEffect(() => {
+        // ... useEffect logic remains the same
         const chartSeries = [{ name: 'Revenue', data: data?.map(item => item.amount1) ?? [] }];
         const chartCategories = data?.map(item => item.date) ?? [];
         const options = {
@@ -31,16 +38,13 @@ const BarChart = ({ title, description, data, summary }) => {
             }
         }
         return () => {
-            if (chartInstance.current) {
-                chartInstance.current.destroy();
-                chartInstance.current = null;
-            }
+            chartInstance.current?.destroy();
+            chartInstance.current = null;
         };
     }, [data]);
 
     return html`
       <div class="flex flex-col lg:flex-row gap-8 items-stretch">
-
         ${summary && html`
           <div class="w-full lg:w-64 flex-shrink-0 bg-white rounded-xl shadow-lg p-6 text-center flex flex-col justify-center">
             <h3 class="text-lg font-semibold text-slate-500 mb-2">${summary.title}</h3>
@@ -49,7 +53,6 @@ const BarChart = ({ title, description, data, summary }) => {
             </p>
           </div>
         `}
-
         <div class="w-full flex-grow bg-white rounded-xl shadow-lg p-6 sm:p-8 flex flex-col">
           <div class="text-center">
             <h2 class="text-xl font-bold text-slate-800 mb-1">${title}</h2>
@@ -57,7 +60,6 @@ const BarChart = ({ title, description, data, summary }) => {
           </div>
           <div class="flex-grow min-h-[350px]" ref=${chartRef}></div>
         </div>
-
       </div>
     `;
 };

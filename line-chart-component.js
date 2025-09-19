@@ -1,3 +1,4 @@
+// @ts-check
 import { h } from 'https://esm.sh/preact';
 import { useEffect, useRef } from 'https://esm.sh/preact/hooks';
 import ApexCharts from 'https://esm.sh/apexcharts';
@@ -5,10 +6,15 @@ import htm from 'https://esm.sh/htm';
 
 const html = htm.bind(h);
 
+/**
+ * Displays a line chart.
+ * @param {import('./types.js').LineChartProps} props
+ * @returns {import('preact').VNode}
+ */
 const LineChart = ({ title, description, data, amount1Title = 'Series 1', amount2Title = 'Series 2' }) => {
+    // ... component logic remains the same
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
-
     useEffect(() => {
         const chartSeries = [
             { name: amount1Title, data: data?.map(item => item.amount1) ?? [] },
@@ -19,13 +25,8 @@ const LineChart = ({ title, description, data, amount1Title = 'Series 1', amount
             chart: { type: 'line', height: '100%', toolbar: { show: true }, foreColor: '#475569' },
             series: chartSeries,
             xaxis: { categories: chartCategories },
-            stroke: {
-                curve: 'straight',
-                width: 3,
-            },
-            markers: {
-                size: 5,
-            },
+            stroke: { curve: 'straight', width: 3, },
+            markers: { size: 5, },
             colors: ['#38bdf8', '#34d399'],
             legend: { position: 'top', horizontalAlign: 'right' },
             grid: { borderColor: '#e2e8f0' },
@@ -39,13 +40,10 @@ const LineChart = ({ title, description, data, amount1Title = 'Series 1', amount
             }
         }
         return () => {
-            if (chartInstance.current) {
-                chartInstance.current.destroy();
-                chartInstance.current = null;
-            }
+            chartInstance.current?.destroy();
+            chartInstance.current = null;
         };
     }, [data, amount1Title, amount2Title]);
-
     return html`
       <div class="w-full bg-white rounded-xl shadow-lg p-6 sm:p-8 flex flex-col">
         <div class="text-center">
