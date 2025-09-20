@@ -7,14 +7,14 @@ import htm from 'https://esm.sh/htm';
 const html = htm.bind(h);
 
 /**
- * Displays an area chart.
- * @param {import('./types.js').AreaChartProps} props
+ * Displays a line chart.
+ * @param {import('../types.js').LineChartProps} props
  * @returns {import('preact').VNode}
  */
-const AreaChart = ({ title, description, data, amount1Title = 'Series 1', amount2Title = 'Series 2' }) => {
+const LineChart = ({ title, description, data, amount1Title = 'Series 1', amount2Title = 'Series 2' }) => {
+    // ... component logic remains the same
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
-
     useEffect(() => {
         const chartSeries = [
             { name: amount1Title, data: data?.map(item => item.amount1) ?? [] },
@@ -22,16 +22,14 @@ const AreaChart = ({ title, description, data, amount1Title = 'Series 1', amount
         ];
         const chartCategories = data?.map(item => item.date) ?? [];
         const options = {
-            chart: { type: 'area', height: '100%', toolbar: { show: true }, foreColor: '#475569' },
+            chart: { type: 'line', height: '100%', toolbar: { show: true }, foreColor: '#475569' },
             series: chartSeries,
             xaxis: { categories: chartCategories },
-            stroke: { curve: 'straight', width: 2, },
+            stroke: { curve: 'straight', width: 3, },
             markers: { size: 5, },
             colors: ['#38bdf8', '#34d399'],
             legend: { position: 'top', horizontalAlign: 'right' },
             grid: { borderColor: '#e2e8f0' },
-            fill: { opacity: 0.5 },
-            dataLabels: { enabled: false }
         };
         if (chartRef.current) {
             if (chartInstance.current) {
@@ -46,7 +44,6 @@ const AreaChart = ({ title, description, data, amount1Title = 'Series 1', amount
             chartInstance.current = null;
         };
     }, [data, amount1Title, amount2Title]);
-
     return html`
       <div class="w-full bg-white rounded-xl shadow-lg p-6 sm:p-8 flex flex-col">
         <div class="text-center">
@@ -58,4 +55,4 @@ const AreaChart = ({ title, description, data, amount1Title = 'Series 1', amount
     `;
 };
 
-export default AreaChart;
+export default LineChart;

@@ -1,0 +1,58 @@
+/** @type {import('../types.js').ChartDataItem[]} */
+const pasajeDiferencial = [
+    // Data for 2022
+    { date: new Date('2022-01-01'), amount1: 3400 },
+    { date: new Date('2022-02-01'), amount1: 3400 },
+    { date: new Date('2022-03-01'), amount1: 3400 },
+    { date: new Date('2022-04-01'), amount1: 3400 },
+    { date: new Date('2022-05-01'), amount1: 3400 },
+    { date: new Date('2022-06-01'), amount1: 3400 },
+    { date: new Date('2022-07-01'), amount1: 3400 },
+    { date: new Date('2022-08-01'), amount1: 3400 },
+    { date: new Date('2022-09-01'), amount1: 3400 },
+    { date: new Date('2022-10-01'), amount1: 3400 },
+    { date: new Date('2022-11-01'), amount1: 3400 },
+    { date: new Date('2022-12-01'), amount1: 3400 },
+
+    // Data for 2023
+    { date: new Date('2023-01-01'), amount1: 3400 },
+    { date: new Date('2023-02-01'), amount1: 3400 },
+    { date: new Date('2023-03-01'), amount1: 3400 },
+    { date: new Date('2023-04-01'), amount1: 3400 },
+    { date: new Date('2023-05-01'), amount1: 3400 },
+    { date: new Date('2023-06-01'), amount1: 3400 },
+    { date: new Date('2023-07-01'), amount1: 3400 },
+    { date: new Date('2023-08-01'), amount1: 3400 },
+    { date: new Date('2023-09-01'), amount1: 3400 },
+    { date: new Date('2023-10-01'), amount1: 3400 },
+    { date: new Date('2023-11-01'), amount1: 3400 },
+    { date: new Date('2023-12-01'), amount1: 3400 },
+
+    // Data for 2024
+    { date: new Date('2024-01-01'), amount1: 3400 },
+    { date: new Date('2024-02-01'), amount1: 3400 },
+    { date: new Date('2024-03-01'), amount1: 3400 },
+    { date: new Date('2024-04-01'), amount1: 3400 },
+    { date: new Date('2024-05-01'), amount1: 3400 },
+    { date: new Date('2024-06-01'), amount1: 3400 },
+    { date: new Date('2024-07-01'), amount1: 3400 },
+    { date: new Date('2024-08-01'), amount1: 3400 },
+    { date: new Date('2024-09-01'), amount1: 3400 },
+    { date: new Date('2024-10-01'), amount1: 3400 },
+    { date: new Date('2024-11-01'), amount1: 3400 },
+    { date: new Date('2024-12-01'), amount1: 3400 },
+
+    // Data for 2025
+    { date: new Date('2025-01-01'), amount1: 3400 },
+    { date: new Date('2025-02-01'), amount1: 3400 },
+    { date: new Date('2025-03-01'), amount1: 3400 },
+    { date: new Date('2025-04-01'), amount1: 3400 },
+    { date: new Date('2025-05-01'), amount1: 3400 },
+    { date: new Date('2025-06-01'), amount1: 3400 },
+    { date: new Date('2025-07-01'), amount1: 3400 },
+    { date: new Date('2025-08-01'), amount1: 3400 },
+    { date: new Date('2025-09-01'), amount1: 3400 },
+    { date: new Date('2025-10-01'), amount1: 3400 },
+    { date: new Date('2025-11-01'), amount1: 3400 },
+    { date: new Date('2025-12-01'), amount1: 3400 },
+];

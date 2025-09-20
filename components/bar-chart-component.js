@@ -8,7 +8,7 @@ const html = htm.bind(h);
 
 /**
  * Displays a bar chart with an optional summary card.
- * @param {import('./types.js').BarChartProps} props
+ * @param {import('../types.js').BarChartProps} props
  * @returns {import('preact').VNode}
  */
 const BarChart = ({ title, description, data, summary }) => {

@@ -6,7 +6,7 @@ const html = htm.bind(h);
 
 /**
  * Creates the main layout with an interactive sidebar.
- * @param {import('./types.js').SidebarLayoutProps} props
+ * @param {import('../types.js').SidebarLayoutProps} props
  * @returns {import('preact').VNode}
  */
 const SidebarLayout = ({ children, activeView, onNavigate }) => {

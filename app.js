@@ -3,10 +3,10 @@ import { h, render } from 'https://esm.sh/preact';
 import { useState } from 'https://esm.sh/preact/hooks';
 import htm from 'https://esm.sh/htm';
 
-import BarChart from './bar-chart-component.js';
-import LineChart from './line-chart-component.js';
-import AreaChart from './area-chart-component.js';
-import SidebarLayout from './sidebar-layout-component.js';
+import BarChart from './components/bar-chart-component.js';
+import LineChart from './components/line-chart-component.js';
+import AreaChart from './components/area-chart-component.js';
+import SidebarLayout from './components/sidebar-layout-component.js';
 
 const html = htm.bind(h);
 
