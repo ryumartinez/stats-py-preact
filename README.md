@@ -20,10 +20,11 @@ The project is organized into modular components, making it easy to understand a
 
 ```
 .
-├── 📄 index.html              # Main HTML entry point, loads scripts.
-├── 📄 app.js                   # Main app component, manages all state.
-├── 📄 sidebar-layout-component.js # The main layout with navigation.
-├── 📄 bar-chart-component.js    # Renders the bar chart and its summary.
-├── 📄 line-chart-component.js   # Renders the line chart.
-└── 📄 area-chart-component.js   # Renders the area chart.
+├── 📄 index.html                  # Main HTML entry point, loads scripts.
+├── 📄 app.js                      # Main app component, manages all state.
+└── 📂 components                  # UI components
+    ├── 📄 sidebar-layout-component.js # The main layout with navigation.
+    ├── 📄 bar-chart-component.js      # Renders the bar chart and its summary.
+    ├── 📄 line-chart-component.js     # Renders the line chart.
+    └── 📄 area-chart-component.js     # Renders the area chart.
 ```
