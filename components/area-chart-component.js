@@ -1,3 +1,4 @@
+// components/area-chart-component.js
 // @ts-check
 import { h } from 'https://esm.sh/preact';
 import { useEffect, useRef } from 'https://esm.sh/preact/hooks';
@@ -16,31 +17,51 @@ const AreaChart = ({ title, description, data, amount1Title = 'Series 1', amount
     const chartInstance = useRef(null);
 
     useEffect(() => {
-        const chartSeries = [
-            { name: amount1Title, data: data?.map(item => item.amount1) ?? [] },
-            { name: amount2Title, data: data?.map(item => item.amount2 ?? null) ?? [] },
-        ];
-        const chartCategories = data?.map(item => item.date) ?? [];
-        const options = {
+        const categories = data?.map(d => d.date) ?? [];
+        const a1 = data?.map(d => d.amount1 ?? 0) ?? [];
+        const a2raw = data?.map(d => (typeof d.amount2 === 'number' ? d.amount2 : null)) ?? [];
+        const hasAnyA2 = a2raw.some(v => v !== null);
+
+        /** @type {import('apexcharts').ApexOptions} */
+        const baseOptions = {
             chart: { type: 'area', height: '100%', toolbar: { show: true }, foreColor: '#475569' },
-            series: chartSeries,
-            xaxis: { categories: chartCategories },
-            stroke: { curve: 'straight', width: 2, },
-            markers: { size: 5, },
+            xaxis: { categories },
+            stroke: { curve: 'straight', width: 2 },
+            markers: { size: 5 },
             colors: ['#38bdf8', '#34d399'],
             legend: { position: 'top', horizontalAlign: 'right' },
             grid: { borderColor: '#e2e8f0' },
             fill: { opacity: 0.5 },
-            dataLabels: { enabled: false }
+            dataLabels: { enabled: false },
+            tooltip: {
+                y: { formatter: (v) => (v == null ? '—' : String(v)) }
+            },
+            noData: { text: 'No data available' }
         };
+
+        const nextSeries = [
+            { name: amount1Title, data: a1 },
+            ...(hasAnyA2 ? [{ name: amount2Title, data: a2raw }] : [])
+        ];
+
         if (chartRef.current) {
-            if (chartInstance.current) {
-                chartInstance.current.updateOptions(options);
-            } else {
-                chartInstance.current = new ApexCharts(chartRef.current, options);
+            const existing = chartInstance.current;
+            const existingSeriesCount = existing?.w?.config?.series?.length ?? 0;
+            const nextSeriesCount = nextSeries.length;
+
+            if (!existing) {
+                chartInstance.current = new ApexCharts(chartRef.current, { ...baseOptions, series: nextSeries });
                 chartInstance.current.render();
+            } else if (existingSeriesCount !== nextSeriesCount) {
+                existing.destroy();
+                chartInstance.current = new ApexCharts(chartRef.current, { ...baseOptions, series: nextSeries });
+                chartInstance.current.render();
+            } else {
+                existing.updateOptions({ ...baseOptions, xaxis: { categories } }, false, true);
+                existing.updateSeries(nextSeries, true);
             }
         }
+
         return () => {
             chartInstance.current?.destroy();
             chartInstance.current = null;
@@ -48,14 +69,14 @@ const AreaChart = ({ title, description, data, amount1Title = 'Series 1', amount
     }, [data, amount1Title, amount2Title]);
 
     return html`
-      <div class="w-full bg-white rounded-xl shadow-lg p-6 sm:p-8 flex flex-col">
-        <div class="text-center">
-          <h2 class="text-xl font-bold text-slate-800 mb-1">${title}</h2>
-          <p class="text-slate-500 mb-6">${description}</p>
-        </div>
-        <div class="flex-grow min-h-[350px]" ref=${chartRef}></div>
+    <div class="w-full bg-white rounded-xl shadow-lg p-6 sm:p-8 flex flex-col">
+      <div class="text-center">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">${title}</h2>
+        <p class="text-slate-500 mb-6">${description}</p>
       </div>
-    `;
+      <div class="flex-grow min-h-[350px]" ref=${chartRef}></div>
+    </div>
+  `;
 };
 
 export default AreaChart;
