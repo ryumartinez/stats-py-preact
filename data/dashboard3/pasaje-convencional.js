@@ -1,5 +1,5 @@
-/** @type {import('../types.js').ChartDataItem[]} */
-const pasajeConvencional = [
+/** @type {import('../../types.js').ChartDataItem[]} */
+export const pasajeConvencional = [
     // Data for 2022
     { date: new Date('2022-01-01'), amount1: 2300 },
     { date: new Date('2022-02-01'), amount1: 2300 },

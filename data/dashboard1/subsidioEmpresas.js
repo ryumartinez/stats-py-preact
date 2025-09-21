@@ -1,0 +1,17 @@
+export const subsidioEmpresas = [
+    { Empresa: "Magno S.A", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "Automotores Guarani SRl", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "Grupo Bene SA", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "Aldana SA", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "Nanduti SRL", MontoGuaranies: 103525385998, MontoDolares: 14117259},
+    { Empresa: "Mcal. Lopez SRL", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "Capiata SRL", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "San Isidro SRL", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "Lambare SA", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "Vanguardia SACI", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "Lince SRL", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "3 Febrero SA", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "Ximex SA", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "La Limepena SRL", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+    { Empresa: "La Sanlorenzana SA", MontoGuaranies: 103525385998, MontoDolares: 14117259 },
+];

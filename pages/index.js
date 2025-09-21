@@ -1,17 +1,10 @@
 // @ts-check
-import DashboardPage from './dashboard-page.js';
-import ComparisonPage from './comparison-page.js';
-import GrowthPage from './growth-page.js';
+import Dashboard2Page from './dashboard2-page.js';
+import Dashboard1Page from "./dashboard1-page.js";
+import Dashboard3Page from "./dashboard3-page.js";
 
-/**
- * Central registry of pages.
- * Each entry has an id (used by routing/state) and a Component to render.
- * Extend this list to add new pages easily.
- */
 export const PAGES = [
-    { id: 'dashboard', Component: DashboardPage, label: 'Dashboard' },
-    { id: 'comparison', Component: ComparisonPage, label: 'Comparison' },
-    { id: 'growth', Component: GrowthPage, label: 'Growth' },
+    { id: 'dashboard1', Component: Dashboard1Page, label: 'Dashboard 1' },
+    { id: 'dashboard2', Component: Dashboard2Page, label: 'Dashboard 2' },
+    { id: 'dashboard3', Component: Dashboard3Page, label: 'Dashboard 3' },
 ];
-
-/** @typedef {PAGES[number]['id']} PageId */

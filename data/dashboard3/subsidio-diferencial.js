@@ -1,5 +1,5 @@
-/** @type {import('../types.js').ChartDataItem[]} */
-const subsidioDiferencial = [
+/** @type {import('../../types.js').ChartDataItem[]} */
+export const subsidioDiferencial = [
     // Original Data
     { date: new Date('2023-01-01'), amount1: 2636, amount2: 1961 },
     { date: new Date('2023-02-01'), amount1: 2205, amount2: 1961 },

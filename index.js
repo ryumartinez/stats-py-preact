@@ -3,12 +3,12 @@ import { h, render } from 'https://esm.sh/preact';
 import { useState } from 'https://esm.sh/preact/hooks';
 import htm from 'https://esm.sh/htm';
 
-import SidebarLayout from './components/sidebar-layout-component.js';
-import { PAGES } from './pages';
+import SidebarLayout from './layouts/sidebar-layout-component.js';
+import { PAGES } from './pages/index.js';
 
 const html = htm.bind(h);
 
-const App = () => {
+const Index = () => {
     /** @type {[('dashboard'|'comparison'|'growth'), import('preact/hooks').StateUpdater<('dashboard'|'comparison'|'growth')>]} */
     const [activeView, setActiveView] = useState('dashboard');
 
@@ -22,4 +22,4 @@ const App = () => {
   `;
 };
 
-render(html`<${App} />`, document.getElementById('app'));
+render(html`<${Index} />`, document.getElementById('app'));

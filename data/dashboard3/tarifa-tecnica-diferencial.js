@@ -1,5 +1,5 @@
 /** @type {import('../types.js').ChartDataItem[]} */
-const tarifaTecnicaDiferencial = [
+export const tarifaTecnicaDiferencial = [
     // Original Data
     { date: new Date('2023-01-01'), amount1: 5636, amount2: 5316 },
     { date: new Date('2023-02-01'), amount1: 5205, amount2: 5316 },

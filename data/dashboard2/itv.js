@@ -1,5 +1,5 @@
-/** @type {import('../types.js').ChartDataItem[]} */
-const busesItvHistorico = [
+/** @type {import('../../types.js').ChartDataItem[]} */
+export const busesItvHistorico = [
     { date: new Date('2021-01-15'), amount1: 1521 },
     { date: new Date('2021-02-15'), amount1: 1412 },
     { date: new Date('2021-03-15'), amount1: 1454 },

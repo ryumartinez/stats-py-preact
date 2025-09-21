@@ -1,0 +1,17 @@
+export const datosPorEmpresa = [
+    { EmpresaLimpia: "Magno S.A", Ipk: 1.57, Validaciones: 50374708, Kilometros: 32049049, BusesConItv: 160 },
+    { EmpresaLimpia: "Automotores Guarani SRl", Ipk: 1.51, Validaciones: 44035785, Kilometros: 29071021, BusesConItv: 148 },
+    { EmpresaLimpia: "Grupo Bene SA", Ipk: 1.54, Validaciones: 42789548, Kilometros: 27709037, BusesConItv: 81 },
+    { EmpresaLimpia: "Aldana SA", Ipk: 1.51, Validaciones: 38477853, Kilometros: 25514803, BusesConItv: 81 },
+    { EmpresaLimpia: "Nanduti SRL", Ipk: 1.51, Validaciones: 38477853, Kilometros: 25514803, BusesConItv: 81 },
+    { EmpresaLimpia: "Mcal. Lopez SRL", Ipk: 1.51, Validaciones: 38477853, Kilometros: 25514803, BusesConItv: 81 },
+    { EmpresaLimpia: "Capiata SRL", Ipk: 1.51, Validaciones: 38477853, Kilometros: 25514803, BusesConItv: 81 },
+    { EmpresaLimpia: "San Isidro SRL", Ipk: 1.51, Validaciones: 38477853, Kilometros: 25514803, BusesConItv: 81 },
+    { EmpresaLimpia: "Lambare SA", Ipk: 1.51, Validaciones: 38477853, Kilometros: 25514803, BusesConItv: 81 },
+    { EmpresaLimpia: "Vanguardia SACI", Ipk: 1.51, Validaciones: 38477853, Kilometros: 25514803, BusesConItv: 81 },
+    { EmpresaLimpia: "Lince SRL", Ipk: 1.51, Validaciones: 38477853, Kilometros: 25514803, BusesConItv: 81 },
+    { EmpresaLimpia: "3 Febrero SA", Ipk: 1.51, Validaciones: 38477853, Kilometros: 25514803, BusesConItv: 81 },
+    { EmpresaLimpia: "Ximex SA", Ipk: 1.51, Validaciones: 38477853, Kilometros: 25514803, BusesConItv: 81 },
+    { EmpresaLimpia: "La Limepena SRL", Ipk: 1.51, Validaciones: 38477853, Kilometros: 25514803, BusesConItv: 81 },
+    { EmpresaLimpia: "La Sanlorenzana SA", Ipk: 1.51, Validaciones: 38477853, Kilometros: 25514803, BusesConItv: 81 },
+];

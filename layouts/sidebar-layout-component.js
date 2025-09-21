@@ -1,6 +1,7 @@
 // @ts-check
 import { h } from 'https://esm.sh/preact';
 import htm from 'https://esm.sh/htm';
+import { PAGES } from './../pages/index.js';
 
 const html = htm.bind(h);
 
@@ -10,12 +11,6 @@ const html = htm.bind(h);
  * @returns {import('preact').VNode}
  */
 const SidebarLayout = ({ children, activeView, onNavigate }) => {
-    const navItems = [
-        { id: 'dashboard', label: 'Dashboard' },
-        { id: 'comparison', label: 'Sales Comparison' },
-        { id: 'growth', label: 'Growth Chart' },
-    ];
-
     const linkClass = (id) => {
         const base = 'block w-full text-left py-2 px-4 rounded-md transition';
         return activeView === id
@@ -30,9 +25,12 @@ const SidebarLayout = ({ children, activeView, onNavigate }) => {
 
           <nav>
             <ul class="space-y-2">
-              ${navItems.map(item => html`
+              ${PAGES.map(item => html`
                 <li>
-                  <button onClick=${() => onNavigate(item.id)} class=${linkClass(item.id)}>
+                  <button
+                    onClick=${() => onNavigate(item.id)}
+                    class=${linkClass(item.id)}
+                  >
                     ${item.label}
                   </button>
                 </li>
