@@ -3,10 +3,8 @@ import { h, render } from 'https://esm.sh/preact';
 import { useState } from 'https://esm.sh/preact/hooks';
 import htm from 'https://esm.sh/htm';
 
-import BarChart from './components/bar-chart-component.js';
-import LineChart from './components/line-chart-component.js';
-import AreaChart from './components/area-chart-component.js';
 import SidebarLayout from './components/sidebar-layout-component.js';
+import { PAGES } from './pages';
 
 const html = htm.bind(h);
 
@@ -20,7 +18,7 @@ const App = () => {
     /** @type {['month' | 'year', import('preact/hooks').StateUpdater<'month' | 'year'>]} */
     const [timeScale, setTimeScale] = useState('month');
 
-    /** @type {['dashboard' | 'comparison' | 'growth', import('preact/hooks').StateUpdater<'dashboard' | 'comparison' | 'growth'>]} */
+    /** @type {[('dashboard'|'comparison'|'growth'), import('preact/hooks').StateUpdater<('dashboard'|'comparison'|'growth')>]} */
     const [activeView, setActiveView] = useState('dashboard');
 
     /** @type {import('./types.js').ProcessedChartDataItem[]} */
@@ -34,7 +32,7 @@ const App = () => {
                 yearlyTotals[year] = { date: year.toString(), amount1: 0, amount2: 0 };
             }
             yearlyTotals[year].amount1 += item.amount1;
-            (yearlyTotals[year].amount2) += (item.amount2 ?? 0);
+            yearlyTotals[year].amount2 += (item.amount2 ?? 0);
         });
         processedData = Object.values(yearlyTotals);
     } else {
@@ -50,51 +48,32 @@ const App = () => {
         summaryAmount: processedData.reduce((sum, item) => sum + item.amount1, 0)
     };
 
-    const buttonClass = (scale) => timeScale === scale ? 'bg-sky-500 text-white' : 'bg-slate-200 text-slate-700 hover:bg-slate-300';
+    const buttonClass = (scale) =>
+        timeScale === scale
+            ? 'bg-sky-500 text-white'
+            : 'bg-slate-200 text-slate-700 hover:bg-slate-300';
+
+    // find the page and render its Component
+    const current = PAGES.find(p => p.id === activeView) ?? PAGES[0];
+    const PageComponent = current.Component;
 
     return html`
-      <${SidebarLayout} activeView=${activeView} onNavigate=${setActiveView}>
+    <${SidebarLayout} activeView=${activeView} onNavigate=${setActiveView}>
+      <div class="flex items-center justify-end mb-4 gap-2">
+        <button onClick=${() => setTimeScale('month')} class="px-4 py-2 text-sm font-semibold rounded-md transition ${buttonClass('month')}">
+          Month
+        </button>
+        <button onClick=${() => setTimeScale('year')} class="px-4 py-2 text-sm font-semibold rounded-md transition ${buttonClass('year')}">
+          Year
+        </button>
+      </div>
 
-        <div class="flex items-center justify-end mb-4 gap-2">
-          <button onClick=${() => setTimeScale('month')} class="px-4 py-2 text-sm font-semibold rounded-md transition ${buttonClass('month')}">
-            Month
-          </button>
-          <button onClick=${() => setTimeScale('year')} class="px-4 py-2 text-sm font-semibold rounded-md transition ${buttonClass('year')}">
-            Year
-          </button>
-        </div>
-
-        ${activeView === 'dashboard' && html`
-          <${BarChart}
-            title="Performance Overview 📊"
-            description="Revenue overview for the selected period."
-            data=${processedData}
-            summary=${barChartSummary}
-          />
-        `}
-
-        ${activeView === 'comparison' && html`
-          <${LineChart}
-            title="Sales Comparison 📈"
-            description="Comparing sales of Product A vs. Product B."
-            data=${processedData}
-            amount1Title="Product A"
-            amount2Title="Product B"
-          />
-        `}
-
-        ${activeView === 'growth' && html`
-          <${AreaChart}
-            title="Growth Overview 🌱"
-            description="Visualizing the growth of Product A and B over time."
-            data=${processedData}
-            amount1Title="Product A"
-            amount2Title="Product B"
-          />
-        `}
-
-      <//>
-    `;
+      <${PageComponent}
+        data=${processedData}
+        summary=${barChartSummary}
+      />
+    <//>
+  `;
 };
 
 render(html`<${App} />`, document.getElementById('app'));
